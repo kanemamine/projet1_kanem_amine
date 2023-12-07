@@ -1,0 +1,18 @@
+.statut_change form button {
+    background: #fff;
+    border: none;
+    border-radius: 3px;
+    color: #6E92F0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 0 0 10px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+.delete_user a {
+    color: red;
+}

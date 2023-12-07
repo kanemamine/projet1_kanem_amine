@@ -1,12 +1,17 @@
-<?php include '../includes/head.php' ?>
-<title>Inscription</title>
+<?php include '../includes/head.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+<title>Inscription</title>
 <link href="../CSSs/inscription.css" rel="stylesheet">
 </head>
 <script src="../js/transition.js"></script>
 <body>
   <main>
     <div class="bloc">
+        
         <h3 class="hello">Bienvenue !</h3>
         <form action="verif_inscription.php" method="POST">
           <h1>Inscrivez-vous</h1>
@@ -29,11 +34,7 @@
           </div>
 
           <div class="password1">
-            <input type="password" placeholder="Mot de passe" required="" name="pwd1">
-          </div>
-
-          <div class="password2">
-            <input type="password" placeholder="Confirmer le mdp" required="" name="pwd2">
+            <input type="password" placeholder="Mot de passe" required="" name="pwd">
           </div>
 
           <button type="submit" name="submit">S'inscrire</button><br>
