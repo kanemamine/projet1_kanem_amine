@@ -76,7 +76,7 @@ if (count($results) != 0) {
 }
 
 // Insérer l'utilisateur dans la base de données
-$q = 'INSERT INTO user (user_name, email, pwd, fname, lname, billing_address_id, shipping_address_id, token, role_id) VALUES  (:user_name, :email, :pwd, :fname, :lname, 1, 1, "123", :role_id)';
+$q = 'INSERT INTO user (user_name, email, pwd, fname, lname, billing_address_id, shipping_address_id, token, role_id) VALUES (:user_name, :email, :pwd, :fname, :lname, 1, 1, "123", :role_id)';
 $req = $bdd->prepare($q);
 $result = $req->execute([
     'fname' => $_POST['fname'],
