@@ -131,7 +131,7 @@
 
     include '../includes/dB.php';
 
-    $conn = mysqli_connect("localhost", "root", "root", "amine");
+    $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
 
     $q = 'SELECT COUNT(*) FROM user';
     $req = $bdd->prepare($q);

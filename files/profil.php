@@ -1,6 +1,10 @@
 
 <?php 
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if(!isset($_SESSION['email'])){
   header('location: index.php');
   exit;
@@ -34,26 +38,29 @@ include '../includes/dB.php';
             include '../includes/message.php';
             ?>
             <div class="col-lg-5">
-              <div class="profil col-lg-12 text-center">
+            <div class="profil col-lg-12 text-center">
                 <a href="deconnexion.php" class="logout"><ion-icon name="log-out-outline"></ion-icon></a>
-                <img src="../images/3551739.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                <?php 
-                  echo '<h3 class="name">' .  ucfirst(strtolower($userInfo[0]['fname'])) . ' ' . strtoupper($userInfo[0]['lname']) . '</h3>';
+                <img src="../images/3551739.jpg" alt="avatar"² class="rounded-circle img-fluid" style="width: 150px;">
+                <?php
+                echo '<h3 class="name">' . ucfirst(strtolower($userInfo[0]['fname'])) . ' ' . strtoupper($userInfo[0]['lname']) . '</h3>';
 
-                  if($userInfo[0]['user_role'] == 'admin'){
-                    echo '<h3 class="role">Administrateur</h3>';
-                  }else{
+                $userInfSelect = 'SELECT role_id FROM user WHERE email = :email';
+                $req = $bdd->prepare($userInfSelect);
+                $req->execute([
+                    'email' => $_SESSION['email']
+                ]);
+                $userRoleId = $req->fetchColumn();
+
+                if ($userRoleId == 1) {
                     echo '<h3 class="role">Client</h3>';
-                  }
-                 
-
                     echo '<div class="btns d-flex justify-content-center mb-2">';
                       echo '<a href="editProfil.php"><button type="button">Modifier le profil</button></a>';
                       echo '<a class="suppression" href="suppression.php"><button type="button">Supprimer le profil</button></a>';
                     echo '</div>';
-                ?> 
-              </div>
+                }
+                ?>
             </div>
+        </div>
 
             <!-- line -->        
             <div class="col-lg-7">
@@ -93,13 +100,13 @@ include '../includes/dB.php';
                   </div>
                 </div>
                 <!-- line -->             
-                <hr>
+                <!-- <hr>
                 <div class="row">
                   <div class="col-sm-4">
                     <p class="mb-0">Telephone</p>
                   </div>
                   <div class="col-sm-8">
-                    <?php 
+                    <php 
                       if($userInfo[0]['phone'] == NULL){
                         echo '<p class="output text-muted mb-0">Telephone</p>';
                       }else{
@@ -114,29 +121,13 @@ include '../includes/dB.php';
                     <p class="mb-0">Adresse</p>
                   </div>
                   <div class="col-sm-8">
-                    <?php  echo '<p class="output text-muted mb-0">' . $userInfo[0]['adresse'] . '</p>'; ?> 
+                    <php  echo '<p class="output text-muted mb-0">' . $userInfo[0]['adresse'] . '</p>'; ?> 
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>                 
           </div>
         </div>
-        
-          <div class="container history">
-            <h1>Historique des Teams buildings :</h1>
-            <hr>
-            <div class="all_cards">
-
-              <div class="card">
-                <a href="index.php"><ion-icon name="information-outline"></ion-icon></a>
-                <h1 class="title_game">Bowling party</h1>
-                <h3>Date : <p>15/02/2023</p></h3>
-                <h3>Organisateur : <p>Massinissa KANEM</p></h3>
-                <h3>Participants : <p>8</p></h3>
-              </div>
-                    
-            </div>
-          </div>   
           
       </main>
     </body>
