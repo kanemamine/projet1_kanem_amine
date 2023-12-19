@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="password">
-                    <input type="password" name="pwd1" placeholder="Mot de passe">
+                    <input type="password" name="pwd" placeholder="Mot de passe">
                 </div>
 
                 <button type="submit" name="submit">Connexion</button><br>

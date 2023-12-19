@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 		setcookie('email', $_POST['email'], time() + 24 * 60 * 60);
 	}
 
-	if(empty($_POST['email']) || empty(htmlspecialchars($_POST['pwd1']))){
+	if(empty($_POST['email']) || empty(htmlspecialchars($_POST['pwd']))){
 		header('location: connexion.php?message=Vous devez remplir les 2 champs'); 
 		exit;
 	}
@@ -22,11 +22,11 @@ error_reporting(E_ALL);
 
 	include('../includes/dB.php'); 
 
-	$q = 'SELECT id FROM user WHERE email = :email AND pwd1 = :pwd1';
+	$q = 'SELECT id FROM user WHERE email = :email AND pwd = :pwd';
 	$req = $bdd->prepare($q);
 	$req->execute([
 					'email' => $_POST['email'],
-					'pwd1' => hash('sha512', $_POST['pwd1'])
+					'pwd' => hash('sha512', $_POST['pwd'])
 				]);
 	$results = $req->fetchAll(); 
 
@@ -38,18 +38,23 @@ error_reporting(E_ALL);
 	$_SESSION['email'] = $_POST['email'];
 
 	//on récupère le status de l'utilisateur
-	$q = 'SELECT user_role FROM user WHERE email = :email';
+	$q = 'SELECT role_id FROM user WHERE email = :email';
 	$req = $bdd->prepare($q);
 	$req->execute([
 		'email' => $_POST['email']
 	]);
-	$userStatus = $req->fetchColumn();
+	$userRoleId = $req->fetchColumn();
 
-	if($userStatus == 2){
+	// Vérification du rôle
+	if ($userRoleId == 1) {
+		header('location: index_user.php');
+		exit;
+	} elseif ($userRoleId == 2) {
 		header('location: adminUsers.php');
 		exit;
-	}else if($userStatus == 1){
-		header('location: index_user.php');
+	} else {
+		// Rôle non reconnu, gestion d'erreur ou redirection vers une page par défaut
+		header('location: erreur.php');
 		exit;
 	}
 ?>
