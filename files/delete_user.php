@@ -8,7 +8,6 @@ include '../includes/dB.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "DELETE FROM user WHERE id = $id";
-    $conn = mysqli_connect("localhost", "root", "root", "amine");
 
     $result = mysqli_query($conn, $sql);
     // header("Location: adminUsers.php?message=Utilisateur supprimé avec succès !");
