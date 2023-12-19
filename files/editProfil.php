@@ -45,9 +45,9 @@ $actual_page = 'editProfil.php';
                             echo '<span class="name font-weight-bold">' . $userInfo[0]['fname'] . ' ' . $userInfo[0]['lname'] . '</span>
                                 <span class="text-black-50">';
                                 
-                                if($userInfo[0]['user_role'] == 1) {
+                                if($userInfo[0]['role_id'] == 1) {
                                     echo '<span class="poste text-black-50">' . "Client". '</span>';
-                                }else if($userInfo[0]['user_role'] == 2){
+                                }else if($userInfo[0]['role_id'] == 2){
                                     echo '<span class="poste text-black-50">' . "Administrateur" . '</span>';
                                     }; 
                                 echo '</span></div>';
@@ -55,12 +55,6 @@ $actual_page = 'editProfil.php';
                     </div>
                     <div class="col-md-8">
                         <div class="p-3 py-5">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                                    <a href="profil.php" class="link-dark"><h6> Retour au profil</h6></a>
-                                </div>
-                                <h6 class="text-right">Edit Profile</h6>
-                            </div> -->
                             
                             <form action="verifProfil.php" method="POST" enctype="multipart/form-data">
                                 <div class="row mt-2">
@@ -69,12 +63,8 @@ $actual_page = 'editProfil.php';
                                                 <div class="col-md-6"><input type="text" name="lname" placeholder="Nom" value="' . $userInfo[0]['lname'] . '"></div>
                                             </div>
                                             <div class="row mt-3">
-                                                <div class="col-md-6"><input type="email" name="email" placeholder="Email" value="' . $userInfo[0]['email'] . '"></div>
+                                                <div class="col-md-6"><input type="email" name="email" placeholder="Email" value="' . $userInfo[0]['email'] . '" readonly></div>
                                                 <div class="col-md-6"><input type="text" name="user_name" placeholder="Nom d\'utilisateur" value="' . $userInfo[0]['user_name'] . '" readonly></div>
-                                            </div>
-                                            <div class="row mt-3">
-                                                <div class="col-md-6"><input type="text" name="phone" placeholder="Numero de téléphone" value="' . $userInfo[0]['phone'] . '"></div>
-                                                <div class="col-md-6"><input type="text" name="adresse" placeholder="adresse" value="' . $userInfo[0]['adresse'] . '"></div>
                                             </div>';
                                     ?>
                                 </div>

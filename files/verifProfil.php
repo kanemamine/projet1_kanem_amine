@@ -13,8 +13,8 @@ if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 $prenom = htmlspecialchars($_POST['fname']);
 $nom = htmlspecialchars($_POST['lname']);
 $email = htmlspecialchars($_POST['email']);
-$phone = intval($_POST['phone']); 
-$adresse = htmlspecialchars($_POST['adresse']);
+// $phone = intval($_POST['phone']); 
+// $adresse = htmlspecialchars($_POST['adresse']);
 $username = htmlspecialchars($_POST['user_name']);
 
 include '../includes/dB.php';
@@ -27,10 +27,10 @@ $results = $req->fetchAll();
 $id = $results[0]['id']; 
 
 if($_POST['email'] == $_SESSION['email']){
-    $update = 'UPDATE user SET fname= :prenom, lname= :nom, email= :email, phone= :phone, adresse= :adresse, user_name= :username WHERE email= :email';
+    $update = 'UPDATE user SET fname= :prenom, lname= :nom, email= :email, user_name= :username WHERE email= :email';
 
     $send = $bdd->prepare($update);
-    $send->execute(array(':prenom'=>$prenom, ':nom'=>$nom,'email'=>$email, ':phone'=>$phone, ':adresse'=>$adresse, ':username'=>$username));
+    $send->execute(array(':prenom'=>$prenom, ':nom'=>$nom,'email'=>$email, ':username'=>$username));
     $_SESSION['email'] = $email;
     header('location: profil.php?message=Informations modifiés avec succès');
     exit;
@@ -49,10 +49,10 @@ if($_POST['email'] != $_SESSION['email']){
         exit;
     }
 
-    $update = 'UPDATE user SET fname= :prenom, lname= :nom, email= :email, phone= :phone, adresse= :adresse, user_name= :username WHERE id= :id';
+    $update = 'UPDATE user SET fname= :prenom, lname= :nom, email= :email, user_name= :username WHERE id= :id';
 
     $send = $bdd->prepare($update);
-    $send->execute(array(':id'=>$id[0]['id'], ':prenom'=>$prenom, ':nom'=>$nom,'email'=>$email, ':phone'=>$phone, ':adresse'=>$adresse, ':username'=>$username));
+    $send->execute(array(':id'=>$id[0]['id'], ':prenom'=>$prenom, ':nom'=>$nom,'email'=>$email, ':username'=>$username));
     $_SESSION['email'] = $email;
     header('location: profil.php?message=Informations modifiés avec succès');
     exit;
