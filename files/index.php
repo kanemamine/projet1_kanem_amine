@@ -41,21 +41,50 @@
     </header>
 
     <main>
-
-        <div class="first_block">
-            
-            <div class="intro">
-                <h2>Renforcez votre équipe et boostez votre productivité</h2>
-                <p>la pratique qui favorise la collaboration et la cohésion au sein de votre entreprise !</p>
-                <a href="inscription.php"><div class="inscription"><ion-icon name="log-in-outline"></ion-icon>S'inscrire</div></a>
-            </div>
-            <div class="blob"></div>
-            <div class="image">
-                <img src="../images/image1.png" alt="illustration">
-            </div>
+    <div class="first_block">
+        <div class="intro">
+            <h2>Découvrez notre sélection exceptionnelle de produits alimentaires</h2>
+            <p>Une expérience gustative unique pour votre plaisir culinaire !</p>
+            <a href="inscription.php"><div class="inscription"><ion-icon name="log-in-outline"></ion-icon>Découvrir</div></a>
         </div>
+        <svg id="chart" width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,242.1048752069084 C 66.6,237.05957611863886 199.79999999999998,215.71389104841668 333,216.8783797655608 C 466.20000000000005,218.04286848270493 532.8,257.0694235995893 666,247.92731879262914 C 799.2,238.78521398566897 932.4,186.51974834313376 999,171.16785573075992" fill="none" stroke="#F68B1E" stroke-width="4px" />
+            <g></g>
+        </svg>
+        <div class="blob"></div>
+        <div class="image">
+            <img src="../images/food_selection_image.png" alt="illustration">
+        </div>
+    </div>
 
-    <main>
+
+    <div id="text">
+        <div>
+            <h1>Découvrez notre sélection de produits alimentaires uniques !</h1>
+        </div>
+        <div>
+            <h2>Nos produits alimentaires, une expérience gustative exceptionnelle.</h2>
+            <hr>
+            <p>
+                Notre gamme de produits alimentaires vise à vous offrir une expérience culinaire exceptionnelle en mettant l'accent sur la qualité, la diversité des saveurs et la satisfaction de vos papilles. Chaque produit est soigneusement sélectionné pour vous garantir une dégustation mémorable.
+            </p>
+        </div>
+        <div>
+            <h2>Pourquoi choisir nos produits alimentaires ?</h2>
+            <hr>
+            <p>
+                Opter pour nos produits alimentaires, c'est choisir la qualité, la fraîcheur et l'authenticité. Nous nous engageons à vous proposer des produits sélectionnés avec soin, issus de producteurs locaux et respectant des normes élevées de qualité. Que vous soyez amateur de saveurs traditionnelles ou en quête de découvertes gustatives, notre sélection saura satisfaire tous les palais.
+            </p>
+        </div>
+        <div>
+            <h2>Découvrez la diversité de notre offre alimentaire :</h2>
+            <hr>
+            <p>
+                Notre catalogue propose une large variété de produits alimentaires pour répondre à tous les goûts et besoins. Parmi nos propositions, vous trouverez des spécialités locales, des ingrédients raffinés, des plats préparés avec soin, des options bio et bien plus encore. Faites-vous plaisir et découvrez de nouvelles saveurs à chaque bouchée !
+            </p>
+        </div>
+    </div>
+</main>
 </body>
 
 </html>

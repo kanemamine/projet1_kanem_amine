@@ -23,7 +23,7 @@ include('../includes/head.php');
                  <div class="menu">
                      <ul>
                         <li class="simple_button"><a href="#text"><ion-icon name="information-circle-outline"></ion-icon>Infos</a></li>
-                        <li class="simple_button"><a href="planning.php"><ion-icon name="information-circle-outline"></ion-icon>Planning</a></li>
+                        <li class="simple_button"><a href="planning.php"><ion-icon name="information-circle-outline"></ion-icon>Produits</a></li>
                         <li class="big_button"><a href="profil.php"><i class="fa-regular fa-user"></i>Mon Profil</a></li>
                      </ul>
                  </div>
@@ -33,48 +33,51 @@ include('../includes/head.php');
  
      <main>
  
-         <div class="first_block">
-             
-             <div class="intro">
-                 <h2>Renforcez votre équipe et boostez votre productivité</h2>
-                 <p>la pratique qui favorise la collaboration et la cohésion au sein de votre entreprise !</p>
-                 <a href="assister.php"><div class="inscription"><ion-icon name="log-in-outline"></ion-icon>Assister</div></a>
-             </div>
-             <svg   id="chart"   width="1000"   height="500"   viewBox="0 0 1000 500"   xmlns="http://www.w3.org/1000/svg" >    <path d="M 0,242.1048752069084 C 66.6,237.05957611863886 199.79999999999998,215.71389104841668 333,216.8783797655608 C 466.20000000000005,218.04286848270493 532.8,257.0694235995893 666,247.92731879262914 C 799.2,238.78521398566897 932.4,186.51974834313376 999,171.16785573075992" fill="none" stroke="#F68B1E" stroke-width="4px" />   <g>      </g> </svg>        
-             <div class="blob"></div>
-             <div class="image">
-                 <img src="../images/connected_image.png" alt="illustration">
-             </div>
-         </div>
- 
-         
-         <div id="text">
-             <div>
-                 <h1>Qu'est-ce qu'un team building ?</h1>
-             </div>
-             <div>
-                 <h2>Le team building est une activité de renforcement d'équipe.</h2>
-                 <hr>
-                 <p>
-                     C'est une activité qui vise à renforcer les liens et la collaboration entre les membres d'une équipe, en mettant l'accent sur les objectifs communs, les valeurs partagées, les compétences et les personnalités de chacun. Les activités de team building peuvent être organisées en entreprise ou à l'extérieur, et peuvent prendre diverses formes, telles que des défis sportifs, des jeux de rôle, des ateliers de créativité, des projets collaboratifs, des sorties culturelles, etc.
-                 </p>
-             </div>
-             <div>
-                 <h2>Pourquoi organiser un team building ?</h2>
-                 <hr>
-                 <p>
-                     Les activités de team building permettent d'améliorer la communication, la cohésion, la motivation et la productivité des membres de l'équipe, en favorisant l'échange, la découverte, la confiance et l'entraide. Elles permettent également de renforcer l'identité et l'image de l'entreprise, en mettant en avant sa culture, ses valeurs et son engagement envers ses collaborateurs.
-                 </p>
-             </div>
-             <div>
-                 <h2>Quelles sont les activités de team building possibles ?</h2>
-                 <hr>
-                 <p>
-                     Les activités de team building peuvent être très variées et adaptées aux objectifs, aux ressources et aux préférences de chaque équipe et entreprise. Voici quelques exemples d'activités de team building : Escape Game, participation à des événements caritatifs, rallye découverte d'une ville ou d'un quartier, karaoké, chorégraphie ou scénettes de théâtre, activité de réalité virtuelle, création artistique (peinture, sculpture, etc.), compétition sportive, apéro, cocktail ou repas, atelier culinaire, tournoi de babyfoot, ping-pong ou autre, jeux de société, randonnée, voyage ou weekend. Il est important de choisir des activités qui répondent aux objectifs et aux besoins de l'équipe, qui soient accessibles et motivantes pour tous les membres, et qui soient encadrées par des professionnels compétents.
-                 </p>
-             </div>
-         </div>
-     </main>
+     <div class="first_block">
+        <div class="intro">
+            <h2>Découvrez notre sélection exceptionnelle de produits alimentaires</h2>
+            <p>Une expérience gustative unique pour votre plaisir culinaire !</p>
+            <a href="produits.php"><div class="inscription"><ion-icon name="log-in-outline"></ion-icon>Découvrir</div></a>
+        </div>
+        <svg id="chart" width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,242.1048752069084 C 66.6,237.05957611863886 199.79999999999998,215.71389104841668 333,216.8783797655608 C 466.20000000000005,218.04286848270493 532.8,257.0694235995893 666,247.92731879262914 C 799.2,238.78521398566897 932.4,186.51974834313376 999,171.16785573075992" fill="none" stroke="#F68B1E" stroke-width="4px" />
+            <g></g>
+        </svg>
+        <div class="blob"></div>
+        <div class="image">
+            <img src="../images/food_selection_image.png" alt="illustration">
+        </div>
+    </div>
+
+
+    <div id="text">
+        <div>
+            <h1>Découvrez notre sélection de produits alimentaires uniques !</h1>
+        </div>
+        <div>
+            <h2>Nos produits alimentaires, une expérience gustative exceptionnelle.</h2>
+            <hr>
+            <p>
+                Notre gamme de produits alimentaires vise à vous offrir une expérience culinaire exceptionnelle en mettant l'accent sur la qualité, la diversité des saveurs et la satisfaction de vos papilles. Chaque produit est soigneusement sélectionné pour vous garantir une dégustation mémorable.
+            </p>
+        </div>
+        <div>
+            <h2>Pourquoi choisir nos produits alimentaires ?</h2>
+            <hr>
+            <p>
+                Opter pour nos produits alimentaires, c'est choisir la qualité, la fraîcheur et l'authenticité. Nous nous engageons à vous proposer des produits sélectionnés avec soin, issus de producteurs locaux et respectant des normes élevées de qualité. Que vous soyez amateur de saveurs traditionnelles ou en quête de découvertes gustatives, notre sélection saura satisfaire tous les palais.
+            </p>
+        </div>
+        <div>
+            <h2>Découvrez la diversité de notre offre alimentaire :</h2>
+            <hr>
+            <p>
+                Notre catalogue propose une large variété de produits alimentaires pour répondre à tous les goûts et besoins. Parmi nos propositions, vous trouverez des spécialités locales, des ingrédients raffinés, des plats préparés avec soin, des options bio et bien plus encore. Faites-vous plaisir et découvrez de nouvelles saveurs à chaque bouchée !
+            </p>
+        </div>
+    </div>
+</main>
+
  
      <footer>
          <div class="media">
@@ -83,8 +86,8 @@ include('../includes/head.php');
              <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
          </div>
          
-         <h4 class="made">Made by <a href="#">Massi KANEM  -  Mathis MAGNE  -  Jeremy MICU</a> </h4>
-         <h4 class="reserve">©Together&Stronger 2023. All Rights Reserved.</h4>
+         <h4 class="made">Fait par <a href="#">Amine KANEM</a> </h4>
+         <h4 class="reserve">©Amine Alimentaire 2023. All Rights Reserved.</h4>
      </footer>
  
  </body>
