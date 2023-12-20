@@ -258,7 +258,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card produit mb-4">
-                
+
                 <div class="card-header pb-0">
                     <h6>Liste des Produits :</h6>
                     <h6>Total : <?php echo $total_products; ?> </h6>
@@ -291,13 +291,15 @@
                                                 <h4><?php echo $row["name"]; ?></h4>
                                                 <h5><?php echo $row["description"]; ?></h5>
                                                 <h6><?php echo $row["price"]; ?> $</h6>
+                                                <h6>Quantité : <?php echo $row["quantity"]; ?></h6>
+                                                
                                             </li>
                                         </ul>
                                         <ul class="list-group list-group-flush prix">
                                             <li class="list-group-item pt-2 pb-2">
                                                 <h4><?php echo $row["price"]; ?> $</h4>
-                                                <button type="button" class="delete" onclick="deleteProduct(<?php echo $row["id"]; ?>)">
-                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                <button type="button" class="delete" onclick="deleteProduct(<?php echo $row['id']; ?>)"> 
+                                                    <ion-icon name="trash-outline"></ion-icon>
                                                 </button>
                                             </li>
                                         </ul>
