@@ -260,6 +260,7 @@
                 <div class="card-header pb-0">
                     <h6>Liste des Produits :</h6>
                     <h6>Total : <?php echo $total_products; ?> </h6>
+                    <a href="addProduit.php" class="btn btn-sm btn-primary">Ajouter un produit</a>
                 </div>
                 <div class="row">
                     <?php
