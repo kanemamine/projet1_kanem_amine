@@ -242,23 +242,21 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    include '../includes/dB.php';
-
     // Connexion à la base de données
     $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
 
     // Requête pour obtenir le nombre total de produits
     $q = 'SELECT COUNT(*) FROM product';
-    $req = $bdd->prepare($q);
-    $req->execute();
-    $total_products = $req->fetchColumn(); // Utilisez fetchColumn pour obtenir une seule valeur
+    $req = mysqli_prepare($conn, $q);
+    mysqli_stmt_execute($req);
+    $total_products = mysqli_stmt_get_result($req)->fetch_row()[0]; // Utilisez fetch_row pour obtenir une seule valeur
+
 ?>
-    
-    <div class="container-fluid py-4">
+
+<div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
             <div class="card produit mb-4">
-
                 <div class="card-header pb-0">
                     <h6>Liste des Produits :</h6>
                     <h6>Total : <?php echo $total_products; ?> </h6>
@@ -274,12 +272,12 @@
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
                             <div class="col-lg-2 col-md-4 col-6 mb-4">
-                                <form id="deleteProduct" method="POST" enctype="multipart/form-data">
+                                <form method="POST" action="deleteProduit.php">
                                     <div class="card h-100">
                                         <div class="card-body">
                                             <div class="imageproduit">
                                                 <a href="#" style="font-size:25px; position: absolute; right: 10px; top: 8px;">
-                                                    <ion-icon name="cart-outline"></ion-icon>
+                                                  <ion-icon name="settings-outline"></ion-icon>
                                                 </a>
                                                 <div style="display: flex; justify-content: center; align-items: center;">
                                                     <img src='<?php echo $row["img_url"]; ?>' class="img-fluid" style="">
@@ -292,19 +290,20 @@
                                                 <h5><?php echo $row["description"]; ?></h5>
                                                 <h6><?php echo $row["price"]; ?> $</h6>
                                                 <h6>Quantité : <?php echo $row["quantity"]; ?></h6>
-                                                
                                             </li>
                                         </ul>
                                         <ul class="list-group list-group-flush prix">
                                             <li class="list-group-item pt-2 pb-2">
                                                 <h4><?php echo $row["price"]; ?> $</h4>
-                                                <button type="button" class="delete" onclick="deleteProduct(<?php echo $row['id']; ?>)"> 
+                                                <input type="hidden" name="productId" value="<?php echo $row['id']; ?>">
+                                                <button type="submit" class="delete">
                                                     <ion-icon name="trash-outline"></ion-icon>
                                                 </button>
                                             </li>
                                         </ul>
                                     </div>
                                 </form>
+                                
                             </div>
                             <?php
                         }
