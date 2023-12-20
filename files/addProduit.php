@@ -3,15 +3,13 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    // Inclure les fichiers nécessaires
-    include '../includes/dB.php';  // Assurez-vous d'inclure le fichier de connexion à la base de données
-    include '../includes/head.php';  // Assurez-vous d'inclure le fichier head.php
+    include '../includes/dB.php';
+    include '../includes/head.php';
 ?>
 <link rel="stylesheet" href="../CSSs/addProduit.css">
 
 <body>
     <main>
-        <!-- Bouton pour retourner à la page des produits -->
         <button class="cta">
             <a href="productList.php">Liste des Produits</a>
             <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -20,7 +18,6 @@
             </svg>
         </button>
 
-        <!-- Formulaire d'ajout de produit -->
         <div class="title container">
             <h1>Ajouter un Produit :</h1>
         </div>
