@@ -170,7 +170,7 @@
                   
                   echo '<tr>';
                   include('../includes/dB.php');
-                  $conn = mysqli_connect("localhost", "root", "root", "amine");
+                  $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
                   $q = 'SELECT * FROM user';
                   $req = $bdd->prepare($q);
                   $req->execute();
@@ -197,15 +197,13 @@
                       echo '<h6 class="text-xs font-weight-bold mb-0">'.$valeure[$a]['user_name'].'</h6>';
                       echo '</td>';
 
-                      
-
                       echo '<td>';
                       echo '<h6 class="text-xs font-weight-bold mb-0">'.$valeure[$a]['email'].'</h6>';
                       echo '</td>';
                       echo '<td class="align-middle text-center text-sm">';
-                      if($valeure[$a]['user_role'] == 2){
+                      if($valeure[$a]['role_id'] == 2){
                         echo '<span class="badge badge-sm bg-gradient-success">Admin</span>';
-                      }else{
+                      }else if ($valeure[$a]['role_id'] == 1){
                         echo '<span class="badge badge-sm bg-gradient-info">User</span>';
                       }
                       echo '</td>';
@@ -239,12 +237,12 @@
                   if (isset($_POST['update_status'])) {
 
                     $user_id = $_POST['user_id'];
-                    $query = "SELECT user_role FROM user WHERE id = $user_id";
+                    $query = "SELECT role_id FROM user WHERE id = $user_id";
                     $result = mysqli_query($conn, $query);
                     $row = mysqli_fetch_assoc($result);
-                    $current_status = $row['user_role'];
+                    $current_status = $row['role_id'];
                     $new_status = ($current_status == 2) ? 1 : 2;
-                    $query = "UPDATE user SET user_role = $new_status WHERE id = $user_id";
+                    $query = "UPDATE user SET role_id = $new_status WHERE id = $user_id";
                     mysqli_query($conn, $query);
                     header("Location: ".$_SERVER['HTTP_REFERER']);
                   }
