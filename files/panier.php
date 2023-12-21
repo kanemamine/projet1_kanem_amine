@@ -46,8 +46,19 @@ if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         echo "</form>";
     }
 
+    
+    $_SESSION['total'] = $total;
+    $_SESSION['user_id'] = $_SESSION['user_id'];
+    $_SESSION['email'] = $_SESSION['email'];
+    
+    // chaque produit avec son prix et sa quantité
+
+    
+
     echo "<p>Total : {$total} €</p>";
-    echo "<a href='commander.php'>Commander</a>";
+    // echo '<a href="../paypage/index.php?total=' . $total . '">Payer</a>';
+    echo '<a href="paiement.php?total=' . $total . '">Payer</a>';
+
 } else {
     echo "<p>Le panier est vide.</p>";
 }
