@@ -19,7 +19,7 @@
                 <?php include '../includes/message.php' ?>
 
                 <div class="email">
-                    <input type="email" name="email" placeholder="Adrsesse mail">  
+                    <input type="email" name="email" placeholder="Adresse mail">  
                 </div>
 
                 <div class="password">

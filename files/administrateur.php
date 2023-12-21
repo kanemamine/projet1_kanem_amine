@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   if(!isset($_SESSION['email'])){
@@ -8,120 +7,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    
-.produit .card {
-    border: 1px solid rgba(0,0,0,.125);
-    padding: 5px 5px;
-    box-shadow: 0px;
-}
 
-.produit .card::after {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.produit .card:hover {
-    transform: scale(1.02, 1.02);
-    -webkit-transform: scale(1.02, 1.02);
-    backface-visibility: hidden; 
-    will-change: transform;
-    box-shadow: 0 1rem 3rem rgba(211, 211, 211, 0.75) !important;
-}
-
-.produit .card:hover::after {
-    opacity: 1;
-}
-
-.produit .card:hover .btn-outline-primary{
-    color:white;
-    background:rgb(24, 119, 242);
-}
-.imageproduit  a ion-icon
-{
-    color: rgb(246, 139, 30);
-}
-.imageproduit  a ion-icon:hover
-{
-    color: rgb(255, 0, 0);
-}
-.titre
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-.titre h4
-{
-    font-size: 18px;
-}
-.titre h5, .titre h6
-{
-    font-size: 15px;
-}
-.titre h6
-{
-    font-size: 15px;
-    color: #929292;
-}
-.prix li
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.prix li h4
-{
-    font-size: 20px;
-    margin: 0;
-}
-.prix li a
-{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-.card .prix li .delete {
-    background-color: rgb(242, 242, 242);
-    border: rgb(255, 255, 255);
-    color: red;
-}
-
-.prix li .btn
-{
-    font-size: 20px;
-    padding: 4px 4px 4px 3px;
-    color: #ffffff;
-    border: 2px solid rgb(255, 195, 135);
-    background-color: rgb(246, 139, 30);
-    border-radius: 7px;
-    margin: 0;
-    width: 35px;
-    height: 35px;
-}
-.prix li .btn:hover
-{
-    font-size: 20px;
-    padding: 4px 4px 4px 3px;
-    color: #464646;
-    transition: 0.4s;
-    background-color: rgb(248, 131, 14);
-    border: 2px solid rgb(255, 195, 135);
-    border-radius: 7px;
-}
-.produit .card-body div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.produit .card-body img{
-    width:100%;
-    height: 150px;
-}
-</style>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -138,6 +24,7 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+  <link href="../CSSs/adminUsers.css" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -153,15 +40,7 @@
       <ul class="navbar-nav">
         
         <li class="nav-item">
-            <a class="nav-link  " href="adminUsers.php">
-                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <ion-icon name="game-controller-outline"></ion-icon>
-                </div>
-                <span class="nav-link-text ms-1">Users</span>
-            </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  active" href="adminProduits.php">
+          <a class="nav-link  active" href="adminUsers.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -176,6 +55,14 @@
                   </g>
                 </g>
               </svg>
+            </div>
+            <span class="nav-link-text ms-1">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="adminProduits.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <ion-icon name="game-controller-outline"></ion-icon>
             </div>
             <span class="nav-link-text ms-1">Produits</span>
           </a>
@@ -242,87 +129,136 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    // Connexion à la base de données
+    include '../includes/dB.php';
+
     $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
 
-    // Requête pour obtenir le nombre total de produits
-    $q = 'SELECT COUNT(*) FROM product';
-
-    $req = mysqli_prepare($conn, $q);
-    mysqli_stmt_execute($req);
-
-    $result = mysqli_stmt_get_result($req);
-
-    $row = mysqli_fetch_row($result);
-    $total_products = $row[0];
-
-    echo "Total Products: $total_products";
-?>
-
-<div class="container-fluid py-4">
-    <div class="row">
+    $q = 'SELECT COUNT(*) FROM user';
+    $req = $bdd->prepare($q);
+    $req->execute();
+    $total_users = $req->fetchAll();
+    ?>
+    
+    <div class="container-fluid py-4">
+      <div class="row">
         <div class="col-12">
-            <div class="card produit mb-4">
-                <div class="card-header pb-0">
-                    <h6>Liste des Produits :</h6>
-                    <h6>Total : <?php echo $total_products; ?> </h6>
-                    <a href="addProduit.php" class="btn btn-sm btn-primary">Ajouter un produit</a>
-                </div>
-                <div class="row">
-                    <?php
-                    // Récupération des informations des produits depuis la table product
-                    $query = 'SELECT * FROM product';
-                    $result = mysqli_query($conn, $query);
-
-                    // Vérification s'il y a des résultats
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                            <div class="col-lg-2 col-md-4 col-6 mb-4">
-                                <form method="POST" action="deleteProduit.php">
-                                    <div class="card h-100">
-                                        <div class="card-body">
-                                            <div class="imageproduit">
-                                                <!-- <a href="#" style="font-size:25px; position: absolute; right: 10px; top: 8px;">
-                                                  <ion-icon name="settings-outline"></ion-icon>
-                                                </a> -->
-                                                <div style="display: flex; justify-content: center; align-items: center;">
-                                                    <img src='<?php echo $row["img_url"]; ?>' class="img-fluid" style="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ul class="list-group pt-2 px-2 list-group-flush description">
-                                            <li class="list-group-item px-1 titre">
-                                                <h4><?php echo $row["name"]; ?></h4>
-                                                <h5><?php echo $row["description"]; ?></h5>
-                                                <h6><?php echo $row["price"]; ?> $</h6>
-                                                <h6>Quantité : <?php echo $row["quantity"]; ?></h6>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-group list-group-flush prix">
-                                            <li class="list-group-item pt-2 pb-2">
-                                                <h4><?php echo $row["price"]; ?> $</h4>
-                                                <input type="hidden" name="productId" value="<?php echo $row['id']; ?>">
-                                                <button type="submit" class="delete">
-                                                    <ion-icon name="trash-outline"></ion-icon>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>
-                                
-                            </div>
-                            <?php
-                        }
-                    } else {
-                        echo "Aucun produit trouvé.";
-                    }
-
-                    // Fermer la connexion à la base de données
-                    mysqli_close($conn);
-                    ?>
-                </div>
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Liste des utilisateurs</h6>
+              <h6>Total : <?php echo $total_users[0][0] ?> </h6>
             </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">username</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Telephone</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">poste</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                  ini_set('display_errors', 1);
+                  ini_set('display_startup_errors', 1);
+                  error_reporting(E_ALL);
+                  
+                  echo '<tr>';
+                  include('../includes/dB.php');
+                  $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
+                  $q = 'SELECT * FROM user';
+                  $req = $bdd->prepare($q);
+                  $req->execute();
+                  $valeure = $req->fetchAll();
+                  $a = 0;
+                  
+                  if(isset($_GET['message'])):
+                    echo '<div class="alert alert-success">
+                            <h3 class="text-center">' . $_GET['message'] . '</h3>
+                          </div>';
+                  endif;
+                  
+                  while($a < count($valeure)){
+                    echo '<tr>';
+                      echo '<td>';
+                      echo '<div class="d-flex px-2 py-1">';
+                      echo '<div class="d-flex flex-column justify-content-center">';
+                      echo '<h6 class="mb-0 text-sm">'. $valeure[$a]['fname'] . ' ' . $valeure[$a]['lname'] . '</h6>';
+                      echo '</div>';
+                      echo '</div>';
+                      echo '</td>';
+
+                      echo '<td>';
+                      echo '<h6 class="text-xs font-weight-bold mb-0">'.$valeure[$a]['user_name'].'</h6>';
+                      echo '</td>';
+
+                      echo '<td>';
+                      echo '<h6 class="text-xs font-weight-bold mb-0">'.$valeure[$a]['email'].'</h6>';
+                      echo '</td>';
+                      echo '<td class="align-middle text-center text-sm">';
+                      if($valeure[$a]['role_id'] == 2){
+                        echo '<span class="badge badge-sm bg-gradient-success">Admin</span>';
+                      }else if ($valeure[$a]['role_id'] == 1){
+                        echo '<span class="badge badge-sm bg-gradient-info">User</span>';
+                      }
+                      echo '</td>';
+                      echo '<td class="align-middle text-center">';
+                      echo '<span class="text-secondary text-xs font-weight-bold">';
+                      if($valeure[$a]['phone'] == NULL){
+                        echo '<h6 class="text-xs font-weight-bold mb-0">NULL</h6>';
+                      }else{
+                        echo '<h6 class="text-xs font-weight-bold mb-0">' . $valeure[$a]['phone'] . '</h6>';
+                      }
+                      echo '</span>';
+                      echo '</td>';
+                      echo '<td class="statut_change align-middle">';
+                        echo '<form method="post">';
+                          echo '<input type="hidden" name="user_id" value="'.$valeure[$a]['id'].'">';
+                          echo '<button type="submit" name="update_status"><i class="fa-solid fa-repeat"></i>Changer le statut</button>';
+                        echo '</form>';
+                      echo '</td>';
+
+                      echo '<td class="align-middle">';
+                          echo '<a href="editUser.php?email=' . $valeure[$a]['email'] . '" class="text-secondary font-weight-bold text-xs"  data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Modifier</a>';
+                      echo '</td>';
+
+                      echo '<td class="delete_user align-middle">';
+                        echo '<a href="delete_user.php?id='. $valeure[$a]['id'] . '" class="font-weight-bold text-xs "  data-toggle="tooltip" data-original-title="Delete user""><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Supprimer</a>';
+                      echo '</td>';
+                    echo '</tr>';
+                    $a++;
+                  }
+                  
+                  if (isset($_POST['update_status'])) {
+
+                    $user_id = $_POST['user_id'];
+                    $query = "SELECT role_id FROM user WHERE id = $user_id";
+                    $result = mysqli_query($conn, $query);
+                    $row = mysqli_fetch_assoc($result);
+                    $current_status = $row['role_id'];
+                    $new_status = ($current_status == 2) ? 1 : 2;
+                    $query = "UPDATE user SET role_id = $new_status WHERE id = $user_id";
+                    mysqli_query($conn, $query);
+                    header("Location: ".$_SERVER['HTTP_REFERER']);
+                  }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      </div>
+      
     </div>
-</div>
+  </main>
+</body>
+
+</html>

@@ -134,9 +134,13 @@
     $conn = mysqli_connect("localhost", "root", "root", "amine_bdd");
 
     $q = 'SELECT COUNT(*) FROM user';
-    $req = $bdd->prepare($q);
-    $req->execute();
-    $total_users = $req->fetchAll();
+    $req = mysqli_prepare($conn, $q);
+    mysqli_stmt_execute($req);
+
+    $result = mysqli_stmt_get_result($req);
+
+    $row = mysqli_fetch_row($result);
+    $total_users = $row[0];
     ?>
     
     <div class="container-fluid py-4">
@@ -145,7 +149,7 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Liste des utilisateurs</h6>
-              <h6>Total : <?php echo $total_users[0][0] ?> </h6>
+              <h6>Total : <?php echo $total_users ?> </h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -209,11 +213,11 @@
                       echo '</td>';
                       echo '<td class="align-middle text-center">';
                       echo '<span class="text-secondary text-xs font-weight-bold">';
-                      if($valeure[$a]['phone'] == NULL){
-                        echo '<h6 class="text-xs font-weight-bold mb-0">NULL</h6>';
-                      }else{
-                        echo '<h6 class="text-xs font-weight-bold mb-0">' . $valeure[$a]['phone'] . '</h6>';
-                      }
+                      // if($valeure[$a]['phone'] == NULL){
+                      //   echo '<h6 class="text-xs font-weight-bold mb-0">NULL</h6>';
+                      // }else{
+                      //   echo '<h6 class="text-xs font-weight-bold mb-0">' . $valeure[$a]['phone'] . '</h6>';
+                      // }
                       echo '</span>';
                       echo '</td>';
                       echo '<td class="statut_change align-middle">';

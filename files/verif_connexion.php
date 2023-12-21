@@ -49,8 +49,11 @@ error_reporting(E_ALL);
 	if ($userRoleId == 1) {
 		header('location: index_user.php');
 		exit;
-	} elseif ($userRoleId == 2) {
+	} elseif ($userRoleId == 3) {
 		header('location: adminUsers.php');
+		exit;
+	}elseif ($userRoleId == 2) {
+		header('location: administrateur.php');
 		exit;
 	} else {
 		// Rôle non reconnu, gestion d'erreur ou redirection vers une page par défaut

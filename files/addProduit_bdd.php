@@ -27,20 +27,24 @@
 
             $img_url = '../images/' . basename($_FILES['productImage']['name']);
             $query = "INSERT INTO product (name, description, price, quantity, img_url) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $bdd->prepare($query);
+        
+            if ($stmt = mysqli_prepare($conn, $query)) {
+                mysqli_stmt_bind_param(
+                    $stmt,
+                    "sidss",
+                    $name,
+                    $description,
+                    $price,
+                    $quantity,
+                    $img_url
 
-            $stmt->bindParam(1, $name);
-            $stmt->bindParam(2, $description);
-            $stmt->bindParam(3, $price);
-            $stmt->bindParam(4, $quantity);
-            $stmt->bindParam(5, $img_url);
-
-            if ($stmt->execute()) {
-                header('location: adminProduits.php');
-            } else {
-                echo "Error adding the product.";
+                );
+        
+                $result = mysqli_stmt_execute($stmt);
+                echo mysqli_error($conn);
             }
         }
+        header('location: adminProduits.php');
     } else {
         echo "Error uploading the image.";
     }
