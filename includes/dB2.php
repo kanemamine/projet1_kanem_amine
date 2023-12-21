@@ -3,8 +3,8 @@
 <?php
 $server = 'localhost';
 $userName = "root";
-$pwd = "root";
-$db = "amine_bdd";
+$pwd = "";
+$db = "ecom1_project";
 
 $conn = mysqli_connect($server, $userName, $pwd, $db);
 if ($conn) {
