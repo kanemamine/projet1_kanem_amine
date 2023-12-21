@@ -277,9 +277,9 @@
                                     <div class="card h-100">
                                         <div class="card-body">
                                             <div class="imageproduit">
-                                                <a href="#" style="font-size:25px; position: absolute; right: 10px; top: 8px;">
+                                                <!-- <a href="#" style="font-size:25px; position: absolute; right: 10px; top: 8px;">
                                                   <ion-icon name="settings-outline"></ion-icon>
-                                                </a>
+                                                </a> -->
                                                 <div style="display: flex; justify-content: center; align-items: center;">
                                                     <img src='<?php echo $row["img_url"]; ?>' class="img-fluid" style="">
                                                 </div>

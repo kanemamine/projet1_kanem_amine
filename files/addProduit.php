@@ -11,7 +11,7 @@
 <body>
     <main>
         <button class="cta">
-            <a href="productList.php">Liste des Produits</a>
+            <a href="adminProduits.php">Liste des Produits</a>
             <svg viewBox="0 0 13 10" height="10px" width="15px">
                 <path d="M1,5 L11,5"></path>
                 <polyline points="8 1 12 5 8 9"></polyline>

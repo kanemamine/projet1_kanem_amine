@@ -25,10 +25,9 @@
                 <div id="google_translate_element" class="trad"></div>
                 <div class="menu">
                     <style>
-                        
-  .smooth-scroll {
-    transition: all 0.5s ease-in-out;
-  }
+                    .smooth-scroll {
+                        transition: all 0.5s ease-in-out;
+                    }
                     </style>
                     <ul>
                         <li class="simple_button"><a href="#text" class="smooth-scroll"><ion-icon name="information-circle-outline"></ion-icon>Infos</a></li>
